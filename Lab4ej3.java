@@ -22,17 +22,23 @@ public class Lab4ej3 {
         int key;
         int i;
         long nano_StartTime = System.nanoTime();
-        for (int j = 1; j < A.length; j++) {
-            key = A[j];
-            i = j - 1;
-            while (i >= 0 && A[i] > key) {
-                A[i + 1] = A[i];
-                i--;
-            }
-            A[i + 1] = key;
+        if (A.length == 1) {
             imprimirArreglo(A);
+        } else {
+            for (int j = 1; j < A.length; j++) {
+                key = A[j];
+                i = j - 1;
+                imprimirArreglo(A);
+                while (i >= 0 && A[i] > key) {
+                    A[i + 1] = A[i];
+                    i--;
+                }
+                A[i + 1] = key;
+                imprimirArreglo(A);
+            }
         }
         long nano_EndTime = System.nanoTime();
+        System.out.println("Tiempo de Ejecución: ");
         return nano_EndTime - nano_StartTime;
     }
 
